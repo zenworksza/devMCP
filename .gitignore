@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.log
+
+.venv/
+.env
+
+# Local server state and credentials.
+memory.json
+remote_servers.json
+file_cache.json
+tools_installed.json
+
+# Local generated indexes/backups.
+.tags
+backups/
