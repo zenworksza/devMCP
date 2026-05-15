@@ -13,7 +13,7 @@ Modular MCP development server for local/offline coding agents.
 ## Run
 
 ```bash
-/home/mdb/mcp-dev-server/.venv/bin/python3 server.py
+/home/$user/mcp-dev-server/.venv/bin/python3 server.py
 ```
 
 The server listens on `0.0.0.0:8000` using FastMCP streamable HTTP.
