@@ -56,7 +56,7 @@ cp .env.example .env
 ### Running the Telegram Bot
 
 ```bash
-/home/mdb/mcp-dev-server/.venv/bin/python3 telegram_bot.py
+/home/$user/mcp-dev-server/.venv/bin/python3 telegram_bot.py
 ```
 
 ## Available Toolsets
