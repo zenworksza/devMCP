@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="assets/devMCP.png" alt="devMCP Banner" width="100%">
+</p>
+
+
 # devMCP
 
 Modular Model Context Protocol (MCP) development server for local/offline coding agents, featuring a Telegram bot for remote management.
