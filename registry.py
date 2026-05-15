@@ -22,6 +22,7 @@ MODULES = [
     "skills.workflows",
     "skills.project_health",
     "skills.scaffold",
+    "skills.ops_workflows",
 ]
 
 

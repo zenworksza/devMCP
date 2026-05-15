@@ -79,6 +79,10 @@ def register(mcp) -> None:
             "hyperfine": "hyperfine",
             "jc": "jc",
             "watchexec": "watchexec",
+            "swagger-cli": "swagger-cli",
+            "openapi-generator-cli": "openapi-generator-cli",
+            "license-checker": "license-checker",
+            "pip-licenses": "pip-licenses",
         }
         return "\n".join(f"{'OK' if cmd_exists(cmd) else 'MISSING'} {label}" for label, cmd in checks.items())
 
@@ -132,6 +136,7 @@ def register(mcp) -> None:
             "radon": "radon",
             "lizard": "lizard",
             "csvkit": "csvkit",
+            "pip-licenses": "pip-licenses",
         }
         npm = {
             "prettier": "prettier",
@@ -141,6 +146,9 @@ def register(mcp) -> None:
             "depcheck": "depcheck",
             "dockerfilelint": "dockerfilelint",
             "ts-prune": "ts-prune",
+            "swagger-cli": "@apidevtools/swagger-cli",
+            "openapi-generator-cli": "@openapitools/openapi-generator-cli",
+            "license-checker": "license-checker",
         }
         target = tool.lower().strip()
         if target in apt:

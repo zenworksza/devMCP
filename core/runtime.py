@@ -51,6 +51,7 @@ def tool_env() -> dict[str, str]:
     env["PATH"] = (
         f"{SERVER_DIR / '.venv' / 'bin'}:"
         "/home/mdb/.local/bin:"
+        "/home/mdb/.cargo/bin:"
         "/home/mdb/.npm-global/bin:"
         "/usr/local/bin:/usr/bin:/bin:"
         + env.get("PATH", "")
