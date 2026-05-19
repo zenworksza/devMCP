@@ -1,0 +1,107 @@
+{
+  "project:HostFlow:summary": {
+    "value": "HostFlow local repo has AGENTS.md and lowercase project.md. MCP project_context could not find Project.md and MCP list_projects does not include HostFlow, so MCP file tools currently point at a different workspace. Project goal: WHMCS-style hosting billing and automation platform using Next.js/React/TS/Tailwind frontend, NestJS/TS REST API backend, PostgreSQL/Prisma, Redis/BullMQ, Docker Compose. MVP focuses on tenants, brands, product groups/products, direct product URLs, cart/checkout without gateway, orders/invoices/clients/services, events/jobs/audit logs, manual provisioning, email logs, admin dashboard, branding.",
+    "updated": "2026-05-14T21:42:03",
+    "expires": null
+  },
+  "project:HostFlow:plan": {
+    "value": "[Updated: 2026-05-17] Plan.md now explicitly includes migration/import plugins as part of the API-first integration architecture. The roadmap intro now states the plugin system must support migration sources, including a WHMCS database import path for clients, invoices, support tickets, and products. Cross-phase rules now require import plugins to preserve source traceability and rerun safety. The cross-phase integration architecture now includes migration/import plugins and repeat-safe WHMCS import behavior. Phase 8 has been renamed to Payment, Provisioning, and Migration Integrations and now explicitly includes a WHMCS database import plugin, source-to-target mapping, import-run audit logging, acceptance criteria for rerun-safe imports, and WHMCS import handoff documentation.",
+    "updated": "2026-05-17T18:47:22",
+    "expires": null
+  },
+  "project:HostFlow:phase0": {
+    "value": "Created Phase0.md. It fully plans Phase 0 Project Foundation with objective, success criteria, scope, required directory structure, tasks 0.1-0.9, deliverables checklist, verification commands, handoff requirements, and Phase 1 readiness gate. It emphasizes Docker Compose split-ready architecture with env-driven endpoints and no hardcoded localhost assumptions.",
+    "updated": "2026-05-14T22:01:23",
+    "expires": null
+  },
+  "project:HostFlow:phase0-implementation": {
+    "value": "Implemented HostFlow Phase 0 locally. Created monorepo directories, placeholder Dockerfiles for apps/api apps/web apps/worker, package.json workspace scripts, tsconfig.base.json, .env.example, .gitignore, docker-compose.yml with postgres redis api web worker, directory READMEs, and root README. Verification passed: file checks, npm run build/lint/test placeholders, docker compose config, docker compose build, docker compose up -d postgres redis showed postgres and redis healthy, docker compose down stopped containers, final docker compose ps empty. Kimi CLI attempted via MCP and local CLI but failed/stalled; Gemini CLI prompted for auth and was stopped.",
+    "updated": "2026-05-14T22:14:00",
+    "expires": null
+  },
+  "project:HostFlow:phase0-location": {
+    "value": "User clarified outer /home/marius-de-beer/workspaces/HostFlow is docs/root and inner /home/marius-de-beer/workspaces/HostFlow/HostFlow is the codebase/build root. Moved Phase 0 scaffold files (.env.example, .gitignore, apps, docker, docker-compose.yml, package.json, packages, tsconfig.base.json) into inner HostFlow/HostFlow. Kept Markdown docs in outer root. Updated README.md and Phase0.md to say commands run from inner HostFlow/. Verified npm build/lint/test, docker compose config/build, up postgres redis healthy, down from inner root. Empty system-managed .agents/.codex/.git dirs remained busy and could not be moved/removed.",
+    "updated": "2026-05-14T22:16:52",
+    "expires": null
+  },
+  "project:HostFlow:phase01": {
+    "value": "Created outer-root Phase01.md. It plans Phase 1 Core Platform Skeleton for inner build root /home/marius-de-beer/workspaces/HostFlow/HostFlow. Covers tasks 1.1-1.9: workspace tooling, NestJS API with /health and /docs, Prisma baseline, Redis connectivity, worker scaffold, Next.js web app with Tailwind, Dockerfile/Compose updates, shared package baseline, docs. Includes deliverables, checks, verification checklist, handoff requirements, and Phase 2 readiness gate. Kimi and Gemini CLI assist attempts were made but timed out/Gemini auth prompt.",
+    "updated": "2026-05-14T22:21:28",
+    "expires": null
+  },
+  "project:HostFlow:agent-connection-test": {
+    "value": "2026-05-15: MCP dev-server reachable at 192.168.1.79:8000/mcp. Required tools are installed in /home/mdb/mcp-dev-server/.venv and detected by tool_status after patching server.py to prepend .venv/bin in tool_env() for run_safe() and _cmd_exists(). systemctl --user restart mcp-dev-server reloads the service. tool_status now reports all green: rg jq black ruff pylint semgrep httpie prettier eslint ast-grep.",
+    "updated": "2026-05-15T09:51:17",
+    "expires": null
+  },
+  "project:HostFlow:phase-status": {
+    "value": "[Updated: 2026-05-16] Phase 3 and Phase 4 are now both closed out in the outer planning docs. Phase03.md reflects completed acceptance and handoff wording. Phase04.md now reflects completed status, checked acceptance, checkout API documentation, workflow/idempotency notes, Phase 5 handoff guidance, and a manual verification checklist. Live health verification passed at http://localhost:3001/health with database and Redis status ok. Delegated review lanes were used for Phase 3 and Phase 4 closeout review; Phase 3 guidance was incorporated and Phase 4 was completed locally.",
+    "updated": "2026-05-16T11:26:21",
+    "expires": null
+  },
+  "project:HostFlow:phase1-read": {
+    "value": "On 2026-05-15, user asked to read Phase1.md. File Phase1.md was not found at project root; closest matching file is Phase01.md. Phase01.md is a 543-line Phase 1 plan for Core Platform Skeleton: NestJS API with /health and /docs, Next.js + Tailwind web app, TS worker, Prisma baseline/migration, Redis connectivity, Dockerfile/Compose updates, shared package baseline, documentation updates, and verification checklist. Prior phase-status memory says Phase 1 is not completed yet.",
+    "updated": "2026-05-15T07:45:22",
+    "expires": null
+  },
+  "project:HostFlow:phase1-implementation": {
+    "value": "[Updated: 2026-05-15] Implemented Phase 1 in inner HostFlow/ workspace. Added npm workspace packages, package-lock, ESLint config, shared package, NestJS API with /health and /docs, Prisma SystemCheck schema + migration, Redis/Prisma health services, API e2e health test, standalone TS worker with Redis/DB startup checks and graceful shutdown, Next.js App Router + Tailwind status page, real Dockerfiles, Compose build contexts, and README/app docs. Verification passed: npm run prisma:generate, npm run build, npm run lint, npm test, npm run test:e2e, local Prisma migrate deploy, docker compose config/build/up, curl /health, curl /docs, curl web root, docker compose ps. /health returned status ok with database and redis ok. Worker logs showed Redis and database OK. Kimi/Gemini route_task calls timed out. MCP http_request still reported httpie missing after tool_install, so direct curl was used. git_push_staging failed because MCP project root is outer HostFlow and not a git repo; inner HostFlow is the actual worktree. Local host Node v20 emitted engine warning for >=22, but Docker images use node:22-alpine and built successfully.",
+    "updated": "2026-05-15T08:58:49",
+    "expires": null
+  },
+  "project:HostFlow:phase1-doc-complete": {
+    "value": "[Updated: 2026-05-15] Phase01.md marked Phase 1 completed. Added top-level status, checked all Phase 1 deliverables, added Completion Record with verified commands/results and operational notes, and checked Phase 2 readiness gate. Note: requested Phase1.md does not exist; existing plan file is Phase01.md.",
+    "updated": "2026-05-15T09:10:06",
+    "expires": null
+  },
+  "project:HostFlow:phase2-plan": {
+    "value": "[Updated: 2026-05-15] Created Phase02.md from Plan.md Phase 2 scope. The plan covers tenant/brand/catalogue schema, seed data, API modules, audit log baseline, admin/API stubs, docs, testing, local verification, acceptance checklist, out-of-scope items, handoff requirements, and Phase 3 readiness gate. Lint hook run on Phase02.md passed, with note that the auto linter reported no Python files for the Markdown path.",
+    "updated": "2026-05-15T11:19:04",
+    "expires": null
+  },
+  "project:HostFlow:phase2-implementation": {
+    "value": "[Updated: 2026-05-15] Phase 2 implementation is in progress and functionally integrated in the inner HostFlow/ workspace. Verified inner-worktree npm run build passed across shared/api/web/worker, npm test --workspace apps/api passed, npm run test:e2e --workspace apps/api passed, and npm run prisma:generate passed. Catalogue schema, migration, seed data, shared catalogue constants/types, InfrastructureModule wiring, admin catalogue controllers, Prisma-backed catalogue service, and API tests are present. Remaining caveat: repo lint invocation is currently blocked by a missing ESLint formatter (`eslint-formatter-compact`), so lint could not be used as a trustworthy verification gate until that tool config is fixed.",
+    "updated": "2026-05-15T12:19:36",
+    "expires": null
+  },
+  "project:HostFlow:phase2-ops-fixes": {
+    "value": "[Updated: 2026-05-15] Fixed repo lint gating by installing eslint-formatter-compact in the inner HostFlow workspace and removing one unused type alias from the catalogue service. Verified inner-worktree `npm run lint` passed. Applied Prisma migration `20260515120000_phase2_catalogue_foundation` to local Postgres via localhost DATABASE_URL override and ran `npm run prisma:seed`. Read-only verification confirmed 1 tenant, 1 brand, 2 product groups, 2 products, and 4 pricing rows in the database. Shell sandbox issue explanation: non-escalated exec_command calls can fail early with `bwrap: loopback: Failed RTM_NEWADDR: Operation not permitted`, which is separate from repo code errors.",
+    "updated": "2026-05-15T12:35:00",
+    "expires": null
+  },
+  "task:hostflow-phase3-storefront-discovery": {
+    "value": "Inspected inner HostFlow repo for Phase 3 discovery. apps/web is a minimal Next 15 App Router app with Tailwind only, server components + server actions, admin middleware on /admin, and no client state library. Current web API helper is admin-key based and unsuitable for public storefront reads. Shared package only exposes catalogue enums/constants, not storefront/cart DTOs. Recommended MVP route set: explicit storefront pages for host/subdomain resolved group/product/cart/checkout plus explicit fallback under /b/[brandSlug]/..., with a small storefront component set and a separate public API helper. Recommended cart state: HTTP-only cookie cart keyed by brand with lean line identifiers and server-side enrichment/validation.",
+    "updated": "2026-05-15T13:25:03",
+    "expires": null
+  },
+  "project:HostFlow:phase4-implementation": {
+    "value": "[Updated: 2026-05-16] Implemented Phase 4 checkout-to-record flow in inner HostFlow/ workspace. Added Prisma commerce schema and applied migration 20260516074922_phase4_checkout_commerce for Client, ClientContact, Order, OrderItem, Invoice, InvoiceItem, Service, Payment, Event, and CheckoutSubmission with lifecycle enums. Added storefront checkout DTOs, POST /storefront/brands/:brandSlug/checkout, GET /storefront/brands/:brandSlug/orders/:orderNumber/confirmation, idempotent submission handling, client link/create, order/invoice/service creation, event logging, and checkout audit log. Replaced the web checkout shell with a real submission form, server action, and confirmation view. Verification passed via npm run build, npm run lint, npm test --workspace apps/api, npm run test:e2e --workspace apps/api, local migration apply, docker compose build/up, API /health, live checkout POST, and live confirmation GET. Remaining Phase 4 follow-up: dedicated documentation and Phase 5 handoff notes from Task 4.5.",
+    "updated": "2026-05-16T10:19:26",
+    "expires": null
+  },
+  "project:HostFlow:phase5-plan": {
+    "value": "[Updated: 2026-05-16] Added Phase05.md in the outer planning workspace. The plan is anchored to completed Phase 4 handoff notes and defines explicit Codex, Kimi, and Gemini responsibilities. Scope centers on immutable events, workflow rules, jobs, job attempts, BullMQ workers, manual review gates, admin jobs and audit views, and audit-chain traceability. Payments are explicitly out of scope for Phase 5 to avoid workflow-plan sprawl. Acceptance criteria, implementation order, testing, and handoff requirements are included.",
+    "updated": "2026-05-16T12:01:15",
+    "expires": null
+  },
+  "project:HostFlow:phase5-start": {
+    "value": "[Updated: 2026-05-17] Started Phase 5 in the inner HostFlow workspace with the first backend foundation slice. Added Prisma schema and migration scaffolding for WorkflowRule, WorkflowAction, Job, and JobAttempt plus workflow enums. Added apps/api/src/workflow module and service to record events, evaluate active rules, create deduped jobs, and write workflow audit logs. Wired storefront checkout event creation through WorkflowService and added unit tests for workflow job creation/dedupe plus updated storefront checkout tests for the new dependency. Verification remains partial: HTTP health is still ok, but repo lint is blocked by the configured eslint compact formatter and deploy_local still points at the outer planning directory instead of the inner app workspace.",
+    "updated": "2026-05-17T19:35:15",
+    "expires": null
+  },
+  "project:StorageZen:issue": {
+    "value": "CVE-2026-42945 nginx fix applied via multi-stage Dockerfile using official nginx:alpine (1.31.0). Host nginx (VPS apt) still needs manual update.",
+    "updated": "2026-05-18T10:50:25",
+    "expires": null
+  },
+  "project:HostFlow:issue": {
+    "value": "2026-05-19: Restored admin login after bootstrap regression. Root cause was docker-compose.yml passing ADMIN_USERNAME and ADMIN_PASSWORD only to the web service while bootstrap admin creation runs in the api service. Added those env vars to the api service, rebuilt api, verified POST http://127.0.0.1:3001/admin/auth/login succeeds with admin / change-me-admin-password, GET http://127.0.0.1:3001/health returns ok, and AdminUser now contains active owner user admin with lastLoginAt 2026-05-19 06:31:01.",
+    "updated": "2026-05-19T08:31:57",
+    "expires": null
+  },
+  "task:phase8-part3:result": {
+    "value": "2026-05-19: Finished HostFlow Phase 8 Part 3 web work. Previously added the setup/tools workspace slice with /admin/tools and sidebar updates. Completed the remaining infrastructure workspace slice by rewriting apps/web/app/admin/tenants/[tenantId]/integrations/page.tsx to add local infrastructure framing, back-to-tenant header, sticky section navigation for plugins/gateways/servers/hypervisors, anchor-targeted sections, and a reserved cloud-resources panel. Validated with npm run lint --workspace @hostflow/web, deploy_local(project=HostFlow, service=web), GET http://127.0.0.1:3001/health ok, authenticated GET /admin/tenants/70867b34-07de-42de-ada1-3394d88949a0/integrations returned 200, and authenticated GET /admin/tools returned 200 earlier in the same part.",
+    "updated": "2026-05-19T09:18:10",
+    "expires": null
+  }
+}

@@ -1,0 +1,79 @@
+{"command": ["kimi", "--quiet", "--afk", "-p", "Reply with exactly: PY_KIMI_OK"], "cwd": "/home/mdb/workspaces", "duration_ms": 10254, "event_type": "command_run", "label": "kimi response", "output_preview": "PY_KIMI_OK\n\nTo resume this session: kimi -r a39ffa34-2c78-4f72-a0c2-357479e9a71c\n", "returncode": 0, "run_id": "441f213b-3909-43c7-aff2-a55971d86e7d", "status": "ok", "ts": "2026-05-19T09:58:18+0200"}
+{"command": ["gemini", "-p", "Reply with exactly: PY_GEMINI_OK"], "cwd": "/home/mdb/workspaces", "duration_ms": 8600, "event_type": "command_run", "label": "gemini response", "output_preview": "PY_GEMINI_OK\nWarning: True color (24-bit) support not detected. Using a terminal with true color enabled will result in a better visual experience.\nRipgrep is not available. Falling back to GrepTool.\n", "returncode": 0, "run_id": "3c2bb762-a4b1-45d9-b185-61aa121af6d6", "status": "ok", "ts": "2026-05-19T09:58:18+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:issue", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T10:40:28+0200"}
+{"agent": "kimi", "command": ["kimi", "--quiet", "--afk", "-p", "Reply with a one-line health check confirming route_task is working for HostFlow."], "event_type": "agent_route_timeout", "ts": "2026-05-19T10:45:28+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:agent-test", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T10:54:49+0200"}
+{"agent": "kimi", "command": ["kimi", "--quiet", "--afk", "-p", "Reply with exactly: KIMI_OK"], "event_type": "agent_route_timeout", "ts": "2026-05-19T10:59:49+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:agent-test", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T10:59:49+0200"}
+{"agent": "gemini", "command": ["gemini", "-p", "Reply with exactly: GEMINI_OK"], "event_type": "agent_route_timeout", "ts": "2026-05-19T11:04:49+0200"}
+{"event_type": "memory_set", "key": "project:hostflow:agent-test", "namespace": "hostflow", "ts": "2026-05-19T11:04:49+0200", "ttl_seconds": 604800}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:27:01+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: kimi --quiet --afk -p]", "returncode": 124, "ts": "2026-05-19T11:28:31+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:28:31+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: gemini -p]", "returncode": 124, "ts": "2026-05-19T11:30:01+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:34:06+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: kimi --quiet --afk -p]", "returncode": 124, "ts": "2026-05-19T11:35:36+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:39:51+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: kimi --quiet --afk -p]", "returncode": 124, "ts": "2026-05-19T11:41:21+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:41:21+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: gemini -p]", "returncode": 124, "ts": "2026-05-19T11:42:51+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:44:19+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "[No output from kimi; returncode=124]", "returncode": 0, "ts": "2026-05-19T11:45:49+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T11:45:49+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "", "returncode": -15, "ts": "2026-05-19T11:46:15+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:19:42+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_MCP_OK\n/home/mdb/mcp-dev-server/.venv/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.\nIt will be compatible before version 2.0.0.\n  from authlib.jose import JsonWebKey, JsonWebToken", "returncode": 0, "ts": "2026-05-19T12:19:47+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:19:47+0200"}
+{"agent": "gemini", "command": ["/home/mdb/mcp-dev-server/.venv/bin/python3", "/home/mdb/mcp-dev-server/core/agent_runner.py", "gemini", "Reply with exactly: GEMINI_MCP_OK"], "event_type": "agent_route_timeout", "ts": "2026-05-19T12:21:23+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:22:46+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_FINAL_OK\n  from authlib.jose import JsonWebKey, JsonWebToken", "returncode": 0, "ts": "2026-05-19T12:22:52+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:22:52+0200"}
+{"agent": "gemini", "command": ["/home/mdb/mcp-dev-server/.venv/bin/python3", "/home/mdb/mcp-dev-server/core/agent_runner.py", "gemini", "Reply with exactly: GEMINI_FINAL_OK"], "event_type": "agent_route_timeout", "ts": "2026-05-19T12:24:27+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:32:20+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "", "returncode": -15, "ts": "2026-05-19T12:33:26+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:35:51+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "", "returncode": -15, "ts": "2026-05-19T12:36:51+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:37:03+0200"}
+{"agent": "gemini", "command": ["bash", "-lc", "cd /home/mdb/mcp-dev-server && /home/mdb/mcp-dev-server/.venv/bin/python3 /home/mdb/mcp-dev-server/core/agent_runner.py gemini \"$AGENT_PROMPT\""], "event_type": "agent_route_timeout", "ts": "2026-05-19T12:38:38+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T12:48:48+0200"}
+{"agent": "gemini", "command": ["env", "-i", "HOME=/home/mdb", "LANG=en_US.UTF-8", "LOGNAME=mdb", "USER=mdb", "SHELL=/bin/bash", "XDG_RUNTIME_DIR=/run/user/1000", "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus", "SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh", "PATH=/home/mdb/mcp-dev-server/.venv/bin:/home/mdb/.local/bin:/home/mdb/.cargo/bin:/home/mdb/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin", "TERM=dumb", "NO_COLOR=1", "CLICOLOR=0", "FORCE_COLOR=0", "CI=1", "PYTHONWARNINGS=ignore", "AGENT_PROMPT=Reply with exactly: GEMINI_FIX_OK", "/home/mdb/mcp-dev-server/.venv/bin/python3", "/home/mdb/mcp-dev-server/core/agent_runner.py", "gemini", "Reply with exactly: GEMINI_FIX_OK"], "event_type": "agent_route_timeout", "ts": "2026-05-19T12:50:23+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:01:45+0200"}
+{"agent": "gemini", "command": ["env", "-i", "HOME=/home/mdb", "LANG=en_US.UTF-8", "LOGNAME=mdb", "USER=mdb", "SHELL=/bin/bash", "XDG_RUNTIME_DIR=/run/user/1000", "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus", "SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh", "PATH=/home/mdb/mcp-dev-server/.venv/bin:/home/mdb/.local/bin:/home/mdb/.cargo/bin:/home/mdb/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin", "TERM=dumb", "NO_COLOR=1", "CLICOLOR=0", "FORCE_COLOR=0", "CI=1", "PYTHONWARNINGS=ignore", "AGENT_PROMPT=Reply with exactly: GEMINI_DONE", "/home/mdb/mcp-dev-server/.venv/bin/python3", "/home/mdb/mcp-dev-server/core/agent_runner.py", "gemini", "Reply with exactly: GEMINI_DONE"], "event_type": "agent_route_timeout", "ts": "2026-05-19T13:03:20+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:05:31+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "", "returncode": -15, "ts": "2026-05-19T13:06:37+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:06:49+0200"}
+{"agent": "gemini", "command": ["env", "-i", "HOME=/home/mdb", "LANG=en_US.UTF-8", "LOGNAME=mdb", "USER=mdb", "SHELL=/bin/bash", "XDG_RUNTIME_DIR=/run/user/1000", "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus", "SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh", "PATH=/home/mdb/mcp-dev-server/.venv/bin:/home/mdb/.local/bin:/home/mdb/.cargo/bin:/home/mdb/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin", "TERM=dumb", "NO_COLOR=1", "CLICOLOR=0", "FORCE_COLOR=0", "CI=1", "PYTHONWARNINGS=ignore", "AGENT_PROMPT=Reply with exactly: GEMINI_WORKS", "/home/mdb/mcp-dev-server/.venv/bin/python3", "/home/mdb/mcp-dev-server/core/agent_runner.py", "gemini", "Reply with exactly: GEMINI_WORKS"], "event_type": "agent_route_timeout", "ts": "2026-05-19T13:08:24+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:08:24+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "", "returncode": -15, "ts": "2026-05-19T13:08:27+0200"}
+{"agent": "gemini", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:09:41+0200"}
+{"agent": "gemini", "event_type": "agent_route_result", "output_preview": "[Timed out after 90s: gemini]", "returncode": 124, "ts": "2026-05-19T13:11:12+0200"}
+{"agent": "kimi", "context_key": "project:hostflow:verify", "event_type": "agent_route", "namespace": "hostflow", "ts": "2026-05-19T13:11:12+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_WORKS_NOW", "returncode": 0, "ts": "2026-05-19T13:11:18+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:16:36+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Command '['gemini', '--approval-mode', 'yolo', '-p', 'Reply with exactly: GEMINI_SIDECAR_OK', '--output-format', 'text']' timed out after 90 seconds", "event_type": "agent_route_exception", "ts": "2026-05-19T13:18:06+0200"}
+{"agent": "kimi", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:18:06+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_SIDECAR_OK", "returncode": 0, "ts": "2026-05-19T13:18:11+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:22:13+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for initialize", "event_type": "agent_route_exception", "ts": "2026-05-19T13:23:13+0200"}
+{"agent": "kimi", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:23:13+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_ACP_SIDECAR_OK", "returncode": 0, "ts": "2026-05-19T13:23:18+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:26:05+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for initialize", "event_type": "agent_route_exception", "ts": "2026-05-19T13:27:06+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:29:17+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP did not return a sessionId", "event_type": "agent_route_exception", "ts": "2026-05-19T13:29:17+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:33:40+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for initialize", "event_type": "agent_route_exception", "ts": "2026-05-19T13:34:41+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:42:59+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for initialize", "event_type": "agent_route_exception", "ts": "2026-05-19T13:44:01+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:47:04+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for authenticate", "event_type": "agent_route_exception", "ts": "2026-05-19T13:48:05+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:52:18+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for authenticate", "event_type": "agent_route_exception", "ts": "2026-05-19T13:53:22+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:54:00+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for session/new", "event_type": "agent_route_exception", "ts": "2026-05-19T13:55:05+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T13:55:44+0200"}
+{"agent": "gemini", "command": ["gemini-sidecar", "submit"], "error": "Gemini ACP timed out waiting for session/new", "event_type": "agent_route_exception", "ts": "2026-05-19T13:57:08+0200"}
+{"agent": "gemini", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T14:08:27+0200"}
+{"agent": "gemini", "event_type": "agent_route_disabled", "reason": "acp_broker_repair_pending", "ts": "2026-05-19T14:08:27+0200"}
+{"agent": "kimi", "context_key": "", "event_type": "agent_route", "namespace": "general", "ts": "2026-05-19T14:08:27+0200"}
+{"agent": "kimi", "event_type": "agent_route_result", "output_preview": "KIMI_DISABLE_OK", "returncode": 0, "ts": "2026-05-19T14:08:32+0200"}
