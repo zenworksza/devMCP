@@ -1,0 +1,9 @@
+{
+  "name": "deploy_check",
+  "description": "Check project before deploy",
+  "steps": [
+    {"tool": "git_status", "args": {}},
+    {"tool": "docker_compose_ps", "args": {}},
+    {"tool": "run_tests", "args": {"test_command": "pytest"}}
+  ]
+}

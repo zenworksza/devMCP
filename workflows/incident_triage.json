@@ -1,0 +1,8 @@
+{
+  "name": "incident_triage",
+  "description": "Collect runtime status for incident triage",
+  "steps": [
+    {"tool": "docker_compose_ps", "args": {}},
+    {"tool": "git_status", "args": {}}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "pr_review",
+  "description": "Quick PR review workflow",
+  "steps": [
+    {"tool": "git_status", "args": {}},
+    {"tool": "run_tests", "args": {"test_command": "pytest"}}
+  ]
+}

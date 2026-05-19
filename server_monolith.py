@@ -193,7 +193,7 @@ def _cache_key(project: str, file_path: str) -> str:
 
 def _get_mtime(project: str, file_path: str) -> float:
     try:
-        return (PROJECT_ROOT / project / file_path).stat().st_mtime
+        return (resolve_project_path(project) / file_path).stat().st_mtime
     except FileNotFoundError:
         return 0.0
 
@@ -273,7 +273,7 @@ def task_start(project: str, task_description: str) -> str:
     # Project context
     found_project_md = False
     for name in ("Project.md", "PROJECT.md", "project.md"):
-        path = PROJECT_ROOT / project / name
+        path = resolve_project_path(project) / name
         if path.exists():
             content = path.read_text()
             sections.append(f"=== Project Context ({name}) ===\n{content[:3000]}")
@@ -321,7 +321,7 @@ def project_context(project: str) -> str:
     Prefer task_start() which loads this plus memory in one call.
     """
     for name in ("Project.md", "PROJECT.md", "project.md"):
-        path = PROJECT_ROOT / project / name
+        path = resolve_project_path(project) / name
         if path.exists():
             return path.read_text()
     return (
@@ -344,7 +344,7 @@ def file_outline(project: str, file_path: str) -> str:
     JS/TS:  export, function, class, const arrow functions
     Other:  top-level non-indented lines
     """
-    full_path = PROJECT_ROOT / project / file_path
+    full_path = resolve_project_path(project) / file_path
     if not full_path.exists():
         return f"[File not found: {full_path}]"
 
@@ -390,7 +390,7 @@ def read_file(project: str, file_path: str, start_line: int = 1, end_line: int =
 
     end_line=0 means read to end of file (still subject to size gate).
     """
-    full_path = PROJECT_ROOT / project / file_path
+    full_path = resolve_project_path(project) / file_path
     if not full_path.exists():
         return f"[File not found: {full_path}]"
 
@@ -432,7 +432,7 @@ def write_file(project: str, file_path: str, content: str) -> str:
     This is the ONLY correct way to make code changes.
     After writing: run lint(), then deploy_local() to apply changes.
     """
-    full_path = PROJECT_ROOT / project / file_path
+    full_path = resolve_project_path(project) / file_path
     try:
         full_path.parent.mkdir(parents=True, exist_ok=True)
         full_path.write_text(content)
@@ -484,7 +484,7 @@ def search_files(project: str, pattern: str, file_glob: str = "") -> str:
 
     Returns file paths and line numbers — use these with read_file(start_line, end_line).
     """
-    path = str(PROJECT_ROOT / project)
+    path = str(resolve_project_path(project))
     if _cmd_exists("rg"):
         cmd = ["rg", "--line-number", "--no-heading"]
         if file_glob:
@@ -511,27 +511,27 @@ def list_projects() -> str:
 @mcp.tool()
 def git_status(project: str) -> str:
     """Show git status (short format)."""
-    return run_safe(["git", "status", "--short"], str(PROJECT_ROOT / project), "git status")
+    return run_safe(["git", "status", "--short"], str(resolve_project_path(project)), "git status")
 
 
 @mcp.tool()
 def git_diff(project: str, path_filter: str = "") -> str:
     """Show git diff. Use path_filter to limit to one file."""
     cmd = ["git", "diff"] + (["--", path_filter] if path_filter else [])
-    return run_safe(cmd, str(PROJECT_ROOT / project), "git diff", head_tail=True)
+    return run_safe(cmd, str(resolve_project_path(project)), "git diff", head_tail=True)
 
 
 @mcp.tool()
 def git_log(project: str, n: int = 10) -> str:
     """Show last N commits (max 50), one line each."""
     return run_safe(["git", "log", "--oneline", f"-{min(n,50)}"],
-                    str(PROJECT_ROOT / project), "git log")
+                    str(resolve_project_path(project)), "git log")
 
 
 @mcp.tool()
 def git_pull(project: str) -> str:
     """Pull latest changes from remote."""
-    return run_safe(["git", "pull"], str(PROJECT_ROOT / project), "git pull")
+    return run_safe(["git", "pull"], str(resolve_project_path(project)), "git pull")
 
 
 @mcp.tool()
@@ -548,7 +548,7 @@ def git_push_staging(project: str, commit_message: str, pr_description: str = ""
     ONLY call this after code is confirmed working via deploy_local() + http_request().
     Never push directly to main.
     """
-    path = str(PROJECT_ROOT / project)
+    path = str(resolve_project_path(project))
     run_safe(["git", "add", "-A"], path)
     commit_out = run_safe(["git", "commit", "-m", commit_message], path)
     if "nothing to commit" in commit_out:
@@ -576,7 +576,7 @@ def git_push_staging(project: str, commit_message: str, pr_description: str = ""
 @mcp.tool()
 def docker_compose_ps(project: str) -> str:
     """Show docker compose service status."""
-    return run_safe(["docker", "compose", "ps"], str(PROJECT_ROOT / project), "docker ps")
+    return run_safe(["docker", "compose", "ps"], str(resolve_project_path(project)), "docker ps")
 
 
 @mcp.tool()
@@ -584,7 +584,7 @@ def docker_compose_logs(project: str, service: str, lines: int = 50) -> str:
     """Show docker compose logs for one service (max 200 lines)."""
     return run_safe(
         ["docker", "compose", "logs", "--tail", str(min(lines, 200)), service],
-        str(PROJECT_ROOT / project), f"{service} logs", head_tail=True
+        str(resolve_project_path(project)), f"{service} logs", head_tail=True
     )
 
 
@@ -592,14 +592,14 @@ def docker_compose_logs(project: str, service: str, lines: int = 50) -> str:
 def docker_compose_build(project: str, service: str = "") -> str:
     """Build docker compose services. Optionally scope to one service."""
     cmd = ["docker", "compose", "build"] + ([service] if service else [])
-    return run_safe(cmd, str(PROJECT_ROOT / project), "docker build", timeout=300)
+    return run_safe(cmd, str(resolve_project_path(project)), "docker build", timeout=300)
 
 
 @mcp.tool()
 def docker_compose_restart(project: str, service: str = "") -> str:
     """Restart docker compose services. Optionally scope to one service."""
     cmd = ["docker", "compose", "restart"] + ([service] if service else [])
-    return run_safe(cmd, str(PROJECT_ROOT / project), "docker restart")
+    return run_safe(cmd, str(resolve_project_path(project)), "docker restart")
 
 
 @mcp.tool()
@@ -609,7 +609,7 @@ def deploy_local(project: str, service: str = "", run_tests_first: bool = False)
     Sends Telegram notification on completion or test failure.
     Call this after write_file() to apply code changes.
     """
-    path    = str(PROJECT_ROOT / project)
+    path    = str(resolve_project_path(project))
     results = []
 
     if run_tests_first:
@@ -638,7 +638,7 @@ def audit_named_volumes(project: str) -> str:
     Inspect docker-compose.yml for bind mounts that should be named volumes.
     Reports ./ or ../ volume entries that look like code directories.
     """
-    compose_path = PROJECT_ROOT / project / "docker-compose.yml"
+    compose_path = resolve_project_path(project) / "docker-compose.yml"
     if not compose_path.exists():
         return f"[docker-compose.yml not found in {project}]"
     content = compose_path.read_text()
@@ -663,7 +663,7 @@ def run_tests(project: str, test_command: str = "pytest") -> str:
     }
     if test_command not in allowed:
         return f"[Blocked. Allowed: {', '.join(allowed.keys())}]"
-    return run_safe(allowed[test_command], str(PROJECT_ROOT / project), f"{test_command} output")
+    return run_safe(allowed[test_command], str(resolve_project_path(project)), f"{test_command} output")
 
 
 # ─── Dev tools ────────────────────────────────────────────────────────────────
@@ -710,7 +710,7 @@ def lint(project: str, file_path: str, linter: str = "auto") -> str:
     Lint a file. linter=auto detects by extension (.py → ruff, .js/.ts → eslint).
     Run this after every write_file() call.
     """
-    full_path = str(PROJECT_ROOT / project / file_path)
+    full_path = str(resolve_project_path(project) / file_path)
     ext       = Path(file_path).suffix.lower()
     if linter == "auto":
         linter = "ruff" if ext == ".py" else "eslint" if ext in (".js",".ts",".jsx",".tsx") else "ruff"
@@ -728,7 +728,7 @@ def lint(project: str, file_path: str, linter: str = "auto") -> str:
 @mcp.tool()
 def lint_project(project: str, linter: str = "auto") -> str:
     """Lint entire project. auto runs ruff on Python and eslint on JS/TS."""
-    path    = str(PROJECT_ROOT / project)
+    path    = str(resolve_project_path(project))
     results = []
     if linter in ("auto", "ruff") and _cmd_exists("ruff"):
         results.append(f"=== ruff ===\n{run_safe(['ruff', 'check', '.'], path, 'ruff', timeout=60)}")
@@ -743,7 +743,7 @@ def format_file(project: str, file_path: str, formatter: str = "auto") -> str:
     Format a file in place. auto detects by extension (.py → black, others → prettier).
     Cache is invalidated after formatting.
     """
-    full_path = str(PROJECT_ROOT / project / file_path)
+    full_path = str(resolve_project_path(project) / file_path)
     ext       = Path(file_path).suffix.lower()
     if formatter == "auto":
         formatter = "black" if ext == ".py" else "prettier"
@@ -766,7 +766,7 @@ def analyse_code(project: str, file_path: str) -> str:
     """
     results = ["=== Lint ===", lint(project, file_path)]
     if _cmd_exists("semgrep"):
-        full_path = str(PROJECT_ROOT / project / file_path)
+        full_path = str(resolve_project_path(project) / file_path)
         results += ["=== Security (semgrep) ===",
                     run_safe(["semgrep", "--config=auto", "--quiet", full_path], label="semgrep", timeout=120)]
     return "\n".join(results)
@@ -784,7 +784,7 @@ def ast_search(project: str, pattern: str, language: str = "python") -> str:
     if not _cmd_exists("sg"):
         return "[ast-grep not installed. Run tool_install('ast-grep')]"
     return run_safe(["sg", "run", "--pattern", pattern, "--lang", language, "."],
-                    str(PROJECT_ROOT / project), "ast-grep", timeout=60)
+                    str(resolve_project_path(project)), "ast-grep", timeout=60)
 
 
 @mcp.tool()
@@ -810,7 +810,7 @@ def jq_query(project: str, file_path: str, query: str) -> str:
     """Run a jq query against a JSON file. Useful for docker inspect, config files, API responses."""
     if not _cmd_exists("jq"):
         return "[jq not installed. Run tool_install('jq')]"
-    return run_safe(["jq", query, str(PROJECT_ROOT / project / file_path)], label="jq output")
+    return run_safe(["jq", query, str(resolve_project_path(project) / file_path)], label="jq output")
 
 
 # ─── Remote server registry ───────────────────────────────────────────────────

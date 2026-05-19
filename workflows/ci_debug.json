@@ -1,0 +1,8 @@
+{
+  "name": "ci_debug",
+  "description": "Collect basic CI debugging signals",
+  "steps": [
+    {"tool": "git_status", "args": {}},
+    {"tool": "run_tests", "args": {"test_command": "pytest"}}
+  ]
+}

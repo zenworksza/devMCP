@@ -1,0 +1,1 @@
+{\n  "read": "allow",\n  "write": "prompt",\n  "git": "allow",\n  "docker": "prompt",\n  "deploy": "prompt",\n  "remote": "prompt",\n  "dangerous": "deny",\n  "network": "allow",\n  "database": "prompt",\n  "agents": "allow",\n  "install": "deny",\n  "telegram_codex_fallback": "deny"\n}\n

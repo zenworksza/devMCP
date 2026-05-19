@@ -1,0 +1,14 @@
+{
+  "read": "allow",
+  "write": "prompt",
+  "git": "allow",
+  "docker": "prompt",
+  "deploy": "prompt",
+  "remote": "prompt",
+  "dangerous": "deny",
+  "network": "allow",
+  "database": "prompt",
+  "agents": "allow",
+  "install": "deny",
+  "telegram_codex_fallback": "deny"
+}
